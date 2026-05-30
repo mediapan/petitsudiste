@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Maison des Aventures — Location Provence, Velaux</title>
+<meta name="description" content="Location Airbnb à Velaux (Bouches-du-Rhône) idéale pour familles et groupes EVJ/EVG. Découvrez nos idées d'activités en Provence.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --sand: #F5EFE0; --sand-dark: #E8DCC8;
+  --terracotta: #C26040; --terracotta-light: #E8896A;
+  --forest: #2D5016; --forest-mid: #4A7A25; --forest-light: #7AB648;
+  --cream: #FDFAF4; --ink: #1C1A16; --ink-muted: #5C5648;
+  --gold: #D4A017; --radius: 16px;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--ink); overflow-x: hidden; }
+
+/* ── NAV ── */
+nav {
+  position: sticky; top: 0; z-index: 200;
+  background: rgba(253,250,244,0.94); backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--sand-dark);
+  padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 64px;
+}
+.nav-logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--forest); letter-spacing: -0.02em; cursor: pointer; }
+.nav-links { display: flex; gap: 1.5rem; align-items: center; }
+.nav-links a { font-size: 0.85rem; font-weight: 500; color: var(--ink-muted); text-decoration: none; letter-spacing: 0.04em; text-transform: uppercase; transition: color 0.2s; }
+.nav-links a:hover { color: var(--terracotta); }
+.nav-cta { background: var(--terracotta) !important; color: white !important; padding: 8px 20px; border-radius: 100px; font-weight: 500 !important; text-transform: none !important; letter-spacing: 0 !important; font-size: 0.9rem !important; transition: background 0.2s !important; }
+.nav-cta:hover { background: var(--terracotta-light) !important; }
+
+/* ── PAGES ── */
+.page { display: none; }
+.page.active { display: block; }
+
+/* ── HERO ── */
+.hero {
+  min-height: 92vh; background: linear-gradient(160deg, var(--forest) 0%, #1a3a0a 60%, #0f2206 100%);
+  display: flex; align-items: center; justify-content: center; flex-direction: column;
+  text-align: center; position: relative; overflow: hidden; padding: 4rem 2rem;
+}
+.hero::before {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(ellipse 60% 40% at 20% 60%, rgba(194,96,64,0.25) 0%, transparent 60%),
+              radial-gradient(ellipse 50% 50% at 80% 30%, rgba(122,182,72,0.15) 0%, transparent 60%);
+}
+.hero-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); border-radius: 100px; padding: 6px 16px; font-size: 0.8rem; color: rgba(255,255,255,0.85); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 2rem; }
+.hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(3rem,7vw,6rem); font-weight: 700; color: white; line-height: 1.05; letter-spacing: -0.03em; margin-bottom: 1.5rem; max-width: 800px; }
+.hero h1 em { font-style: italic; color: var(--terracotta-light); }
+.hero p { font-size: 1.15rem; color: rgba(255,255,255,0.7); max-width: 560px; line-height: 1.7; margin-bottom: 2.5rem; font-weight: 300; }
+.hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+.hero-scroll { margin-top: 4rem; color: rgba(255,255,255,0.4); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; display: flex; align-items: center; flex-direction: column; gap: 8px; animation: bounce 2s infinite; }
+@keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(6px)} }
+
+/* ── BUTTONS ── */
+.btn-primary { background: var(--terracotta); color: white; padding: 14px 32px; border-radius: 100px; font-weight: 500; font-size: 0.95rem; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: transform 0.2s, background 0.2s; border: none; cursor: pointer; font-family: 'DM Sans', sans-serif; }
+.btn-primary:hover { background: var(--terracotta-light); transform: translateY(-2px); }
+.btn-outline { background: transparent; color: white; border: 1.5px solid rgba(255,255,255,0.4); padding: 14px 32px; border-radius: 100px; font-weight: 500; font-size: 0.95rem; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: border-color 0.2s, background 0.2s; cursor: pointer; font-family: 'DM Sans', sans-serif; }
+.btn-outline:hover { border-color: white; background: rgba(255,255,255,0.08); }
+
+/* ── PHOTOS ── */
+.photos { display: grid; grid-template-columns: 2fr 1fr 1fr; grid-template-rows: 280px 200px; gap: 6px; margin: 2px; }
+.photo-slot { overflow: hidden; position: relative; }
+.photo-slot:first-child { grid-row: 1/3; }
+.photo-inner { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 3.5rem; }
+.p1{background:linear-gradient(135deg,#4A7A25,#2D5016)} .p2{background:linear-gradient(135deg,#C26040,#8B3E25)} .p3{background:linear-gradient(135deg,#D4A017,#A07810)} .p4{background:linear-gradient(135deg,#2D5016,#1a3a0a)} .p5{background:linear-gradient(135deg,#7AB648,#4A7A25)}
+.photo-label { position: absolute; bottom: 12px; left: 12px; background: rgba(0,0,0,0.5); color: white; font-size: 0.7rem; padding: 4px 10px; border-radius: 100px; letter-spacing: 0.04em; }
+
+/* ── SECTIONS ── */
+section { padding: 6rem 2rem; }
+.container { max-width: 1100px; margin: 0 auto; }
+.section-label { font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--terracotta); font-weight: 500; margin-bottom: 1rem; }
+h2 { font-family: 'Playfair Display', serif; font-size: clamp(2rem,4vw,3rem); font-weight: 700; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 1.5rem; }
+
+/* ── LOGEMENT ── */
+.logement-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+.logement-visual { background: var(--sand); border-radius: var(--radius); aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; font-size: 5rem; }
+.features-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem; }
+.feature-item { display: flex; align-items: center; gap: 10px; font-size: 0.9rem; color: var(--ink-muted); }
+.feature-item i { color: var(--forest-mid); font-size: 1.1rem; }
+
+/* ── TABS ── */
+.tabs { display: flex; gap: 4px; background: var(--sand); border-radius: 100px; padding: 4px; width: fit-content; margin-bottom: 3rem; }
+.tab-btn { padding: 10px 24px; border-radius: 100px; border: none; background: transparent; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 500; cursor: pointer; color: var(--ink-muted); transition: all 0.2s; }
+.tab-btn.active { background: white; color: var(--ink); box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
+/* ── ACTIVITÉS ── */
+.activites-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(300px,1fr)); gap: 1.5rem; }
+.card-activite { background: white; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--sand-dark); transition: transform 0.2s, box-shadow 0.2s; }
+.card-activite:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.08); }
+.card-header { height: 160px; display: flex; align-items: center; justify-content: center; font-size: 3.5rem; position: relative; }
+.card-cat { position: absolute; top: 12px; left: 12px; font-size: 0.7rem; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 500; padding: 4px 10px; border-radius: 100px; }
+.cat-nature{background:#EAF3DE;color:#3B6D11} .cat-culture{background:#E6F1FB;color:#185FA5} .cat-sport{background:#FAECE7;color:#993C1D} .cat-fete{background:#FBEAF0;color:#993556} .cat-loisir{background:#FAEEDA;color:#854F0B}
+.card-body { padding: 1.25rem; }
+.card-body h3 { font-size: 1rem; font-weight: 500; margin-bottom: 0.4rem; }
+.card-body p { font-size: 0.85rem; color: var(--ink-muted); line-height: 1.6; margin-bottom: 1rem; }
+.card-meta { display: flex; gap: 1rem; flex-wrap: wrap; }
+.meta-item { display: flex; align-items: center; gap: 5px; font-size: 0.8rem; color: var(--ink-muted); }
+
+/* ── TÉMOIGNAGES ── */
+.testi-section { background: var(--sand); }
+.testi-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(300px,1fr)); gap: 1.5rem; margin-top: 3rem; }
+.testi-card { background: white; border-radius: var(--radius); padding: 1.5rem; }
+.stars { color: var(--gold); font-size: 0.85rem; margin-bottom: 0.75rem; }
+.testi-text { font-size: 0.9rem; line-height: 1.7; color: var(--ink-muted); font-style: italic; margin-bottom: 1rem; }
+.testi-author { display: flex; align-items: center; gap: 10px; }
+.testi-avatar { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 500; color: white; }
+.testi-name { font-size: 0.85rem; font-weight: 500; }
+.testi-group { font-size: 0.75rem; color: var(--ink-muted); }
+
+/* ── INFOS ── */
+.infos-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(220px,1fr)); gap: 1.5rem; margin-top: 3rem; }
+.info-card { background: white; border-radius: var(--radius); padding: 1.5rem; border: 1px solid var(--sand-dark); }
+.info-icon { width: 48px; height: 48px; background: var(--sand); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; font-size: 1.3rem; color: var(--forest-mid); }
+.info-label { font-size: 0.75rem; color: var(--ink-muted); margin-bottom: 0.25rem; }
+.info-value { font-size: 1rem; font-weight: 500; }
+
+/* ── CTA ── */
+.cta-section { background: var(--forest); color: white; text-align: center; }
+.cta-section h2 { color: white; }
+.cta-section p { color: rgba(255,255,255,0.7); max-width: 500px; margin: 0 auto 2.5rem; line-height: 1.7; }
+.cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+/* ── BLOG PAGE ── */
+.blog-page { padding: 4rem 2rem; }
+.blog-header { max-width: 800px; margin: 0 auto 3rem; }
+.blog-generator { max-width: 800px; margin: 0 auto; }
+.ideas-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 1.5rem; }
+.idea-chip { padding: 6px 14px; border-radius: 100px; border: 1px solid var(--sand-dark); font-size: 12px; cursor: pointer; background: white; color: var(--ink-muted); transition: all 0.15s; font-family: 'DM Sans', sans-serif; }
+.idea-chip:hover { background: var(--sand); color: var(--ink); }
+.gen-controls { display: flex; gap: 8px; margin-bottom: 1rem; }
+.gen-controls input { flex: 1; padding: 10px 16px; border: 1px solid var(--sand-dark); border-radius: 100px; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; background: white; outline: none; }
+.gen-controls input:focus { border-color: var(--forest-mid); }
+.gen-controls select { padding: 10px 16px; border: 1px solid var(--sand-dark); border-radius: 100px; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; background: white; outline: none; cursor: pointer; }
+.gen-btn { background: var(--forest); color: white; padding: 10px 24px; border-radius: 100px; border: none; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 500; cursor: pointer; display: flex; align-items: center; gap: 8px; white-space: nowrap; transition: background 0.2s; }
+.gen-btn:hover { background: var(--forest-mid); }
+.gen-btn:disabled { background: var(--sand-dark); color: var(--ink-muted); cursor: not-allowed; }
+.progress-bar { height: 3px; background: var(--sand); border-radius: 2px; overflow: hidden; margin-bottom: 0.5rem; display: none; }
+.progress-bar.show { display: block; }
+.progress-fill { height: 100%; background: var(--forest-mid); width: 0%; border-radius: 2px; transition: width 0.4s ease; }
+.status-txt { font-size: 12px; color: var(--ink-muted); min-height: 18px; margin-bottom: 1.5rem; }
+.article-card { background: white; border-radius: var(--radius); border: 1px solid var(--sand-dark); padding: 2.5rem; display: none; }
+.article-card.show { display: block; }
+.article-card h1 { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 700; margin-bottom: 1rem; line-height: 1.2; }
+.article-card h2 { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: var(--forest); margin: 2rem 0 0.75rem; }
+.article-card h3 { font-size: 1rem; font-weight: 500; margin: 1.25rem 0 0.4rem; }
+.article-card p { font-size: 0.95rem; line-height: 1.8; color: var(--ink-muted); margin-bottom: 0.75rem; }
+.article-card ul { padding-left: 1.4rem; margin-bottom: 1rem; }
+.article-card li { font-size: 0.95rem; line-height: 1.7; color: var(--ink-muted); margin-bottom: 4px; }
+.article-card strong { color: var(--ink); font-weight: 500; }
+.art-meta { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid var(--sand-dark); }
+.art-badge { padding: 4px 12px; border-radius: 100px; font-size: 11px; font-weight: 500; }
+.badge-f { background: #EAF3DE; color: #3B6D11; }
+.badge-e { background: #FBEAF0; color: #993556; }
+.art-info { font-size: 12px; color: var(--ink-muted); display: flex; align-items: center; gap: 4px; }
+.copy-strip { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--sand-dark); display: flex; gap: 8px; }
+.copy-btn-sm { padding: 8px 16px; border-radius: 100px; border: 1px solid var(--sand-dark); background: white; font-family: 'DM Sans', sans-serif; font-size: 12px; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: background 0.15s; }
+.copy-btn-sm:hover { background: var(--sand); }
+
+/* ── BLOG LIST ── */
+.blog-list { max-width: 800px; margin: 2rem auto 0; }
+.blog-list h3 { font-size: 1rem; font-weight: 500; margin-bottom: 1rem; color: var(--ink-muted); }
+.saved-articles { display: flex; flex-direction: column; gap: 12px; }
+.saved-card { background: white; border: 1px solid var(--sand-dark); border-radius: 12px; padding: 1rem 1.25rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.saved-title { font-size: 0.9rem; font-weight: 500; }
+.saved-meta { font-size: 0.75rem; color: var(--ink-muted); margin-top: 2px; }
+.saved-actions { display: flex; gap: 6px; }
+.icon-btn { width: 32px; height: 32px; border-radius: 8px; border: 1px solid var(--sand-dark); background: white; display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--ink-muted); font-size: 15px; transition: background 0.15s; }
+.icon-btn:hover { background: var(--sand); }
+.empty-state { text-align: center; padding: 3rem; color: var(--ink-muted); font-size: 0.9rem; }
+
+/* ── FOOTER ── */
+footer { background: var(--ink); color: rgba(255,255,255,0.5); padding: 2rem; text-align: center; font-size: 0.8rem; }
+footer strong { color: rgba(255,255,255,0.8); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .logement-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .photos { grid-template-columns: 1fr 1fr; grid-template-rows: 200px 200px 150px; }
+  .photo-slot:first-child { grid-row: auto; grid-column: 1/3; }
+  nav .nav-links a:not(.nav-cta) { display: none; }
+  .gen-controls { flex-wrap: wrap; }
+  .gen-controls select { width: 100%; border-radius: 100px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo" onclick="showPage('home')">La Maison des Aventures</div>
+  <div class="nav-links">
+    <a href="#logement" onclick="showPage('home')">Le logement</a>
+    <a href="#activites" onclick="showPage('home')">Activités</a>
+    <a href="#" onclick="showPage('blog'); return false;">Blog</a>
+    <a href="#reserver" onclick="showPage('home')" class="nav-cta">Réserver</a>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════ PAGE HOME ═══════════════════════════════ -->
+<div class="page active" id="page-home">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-badge"><i class="ti ti-map-pin" aria-hidden="true"></i> Velaux · Bouches-du-Rhône</div>
+    <h1>Votre <em>escapade</em> en Provence commence ici</h1>
+    <p>Un refuge chaleureux pour vos séjours en famille ou entre amis — au cœur de la Provence, à deux pas de Marseille et de la Sainte-Victoire.</p>
+    <div class="hero-buttons">
+      <a href="#reserver" class="btn-primary"><i class="ti ti-calendar" aria-hidden="true"></i> Voir les disponibilités</a>
+      <a href="#activites" class="btn-outline"><i class="ti ti-compass" aria-hidden="true"></i> Explorer les activités</a>
+    </div>
+    <div class="hero-scroll"><i class="ti ti-chevron-down" aria-hidden="true"></i> Découvrir</div>
+  </section>
+
+  <!-- PHOTOS -->
+  <div class="photos">
+    <div class="photo-slot"><div class="photo-inner p1">🏡</div><span class="photo-label">Vue extérieure</span></div>
+    <div class="photo-slot"><div class="photo-inner p2">🛋️</div><span class="photo-label">Salon</span></div>
+    <div class="photo-slot"><div class="photo-inner p3">🍳</div><span class="photo-label">Cuisine</span></div>
+    <div class="photo-slot"><div class="photo-inner p4">🛏️</div><span class="photo-label">Chambres</span></div>
+    <div class="photo-slot"><div class="photo-inner p5">🌿</div><span class="photo-label">Jardin</span></div>
+  </div>
+
+  <!-- LOGEMENT -->
+  <section id="logement">
+    <div class="container">
+      <div class="logement-grid">
+        <div>
+          <p class="section-label">Le logement</p>
+          <h2>Un espace généreux conçu pour se retrouver</h2>
+          <p style="color:var(--ink-muted);line-height:1.8;margin-bottom:1rem;">Parfait pour les familles avec enfants ou les groupes d'amis, ce logement spacieux offre tout le confort nécessaire pour profiter pleinement de la Provence. Grande terrasse, jardin arboré, et équipements complets.</p>
+          <div class="features-grid">
+            <div class="feature-item"><i class="ti ti-users" aria-hidden="true"></i> Jusqu'à 8 personnes</div>
+            <div class="feature-item"><i class="ti ti-bed" aria-hidden="true"></i> 4 chambres</div>
+            <div class="feature-item"><i class="ti ti-bath" aria-hidden="true"></i> 2 salles de bain</div>
+            <div class="feature-item"><i class="ti ti-wifi" aria-hidden="true"></i> Wifi haut débit</div>
+            <div class="feature-item"><i class="ti ti-car" aria-hidden="true"></i> Parking privé</div>
+            <div class="feature-item"><i class="ti ti-plant" aria-hidden="true"></i> Grand jardin</div>
+            <div class="feature-item"><i class="ti ti-tool-kitchen-2" aria-hidden="true"></i> Cuisine équipée</div>
+            <div class="feature-item"><i class="ti ti-snowflake" aria-hidden="true"></i> Climatisation</div>
+          </div>
+        </div>
+        <div class="logement-visual">🏡</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACTIVITÉS -->
+  <section id="activites" style="background:var(--sand);">
+    <div class="container">
+      <p class="section-label">Nos suggestions</p>
+      <h2>Des idées pour chaque groupe</h2>
+      <p style="color:var(--ink-muted);max-width:560px;line-height:1.8;margin-bottom:3rem;">Que vous veniez en famille ou pour un événement entre amis, la région regorge de belles idées.</p>
+      <div class="tabs">
+        <button class="tab-btn active" onclick="switchTab('famille')"><i class="ti ti-heart" aria-hidden="true"></i> Familles</button>
+        <button class="tab-btn" onclick="switchTab('evj')"><i class="ti ti-confetti" aria-hidden="true"></i> EVJ / EVG</button>
+        <button class="tab-btn" onclick="switchTab('tous')"><i class="ti ti-users" aria-hidden="true"></i> Tous publics</button>
+      </div>
+
+      <!-- Familles -->
+      <div class="tab-panel active" id="panel-famille">
+        <div class="activites-grid">
+          <div class="card-activite"><div class="card-header" style="background:#EAF3DE">🦁<span class="card-cat cat-nature">Nature</span></div><div class="card-body"><h3>Zoo de la Barben</h3><p>L'un des plus grands parcs animaliers du Sud — lions, girafes, rhinocéros dans un cadre provençal unique.</p><div class="card-meta"><span class="meta-item"><i class="ti ti-map-pin"></i> 15 min</span><span class="meta-item"><i class="ti ti-clock"></i> Journée</span><span class="meta-item"><i class="ti ti-coin"></i> ~22€/adulte</span></div></div></div>
+          <div class="card-activite"><div class="card-header" style="background:#E6F1FB">🏔️<span class="card-cat cat-culture">Randonnée</span></div><div class="card-body"><h3>Sentiers de la Sainte-Victoire</h3><p>Balades accessibles au pied de la montagne chère à Cézanne, avec panoramas sur la Provence.</p><div class="card-meta"><span class="meta-item"><i class="ti ti-map-pin"></i> 20 min</span><span class="meta-item"><i class="ti ti-clock"></i> Demi-journée</span><span class="meta-item"><i class="ti ti-coin"></i> Gratuit</span></div></div></div>
+          <div class="card-activite"><div class="card-header" style="background:#FAEEDA">🎡<span class="card-cat cat-loisir">Loisir</span></div><div class="card-body"><h3>Aquacity Bouc-Bel-Air</h3><p>Parc aquatique familial avec toboggans et espace enfants — idéal pour se rafraîchir l'été.</p><div class="card-meta"><span class="meta-item"><i class="ti ti-map-pin"></i> 10 min</span><span class="meta-item"><i class="ti ti-clock"></i> Journée</span><span class="meta-item"><i class="ti ti-coin"></i> ~18€/pers</span></div></div></div>
+          <div class="card-activite"><div class="card-header" style="background:#FAECE7">🏰<span class="card-cat cat-culture">Culture</span></div><div class="card-body"><h3>Village des Baux-de-Provence</h3><p>Village médiéval classé parmi les plus beaux de France — catapultes, château fort et vue imprenable.</p><div class="card-meta"><span class="meta-item"><i class="ti ti-map-pin"></i> 45 min</span><span class="meta-item"><i class="ti ti-clock"></i> Demi-journée</span><span class="meta-item"><i class="ti ti-coin"></i> ~10€/adulte</span></div></div></div>
+          <div class="card-activite"><div class="card-header" style="background:#E1F5EE">🧗<span class="card-cat cat-sport">Sport</span></div><div class="card-body"><h3>Escalade à Bibémus</h3><p>Carrières de grès ocre avec voies pour débutants et enfants — un décor de film au coucher du soleil.</p><div class="card-meta"><span class="meta-item"><i class="ti ti-map-pin"></i> 25 min</span><span class="meta-item"><i class="ti ti-clock"></i> Demi-journée</span><span class="meta-item"><i class="ti ti-coin"></i> Gratuit</span></div></div></div>
+          <div class="card-activite"><div class="card-header" style="background:#EEEDFE">🎨<span class="card-cat cat-culture">Culture</span></div><div class="card-body"><h3>Atelier céramique à Aix</h3><p>Cours parents-enfants dans un atelier en centre-ville d'Aix — un souvenir fait main à ramener.</p><div class="card-meta"><span class="meta-item"><i class="ti ti-map-pin"></i> 15 min</span><span class="meta-item"><i class="ti ti-clock"></i> 2h</span><span class="meta-item"><i class="ti ti-coin"></i> ~35€/pers</span></div></div></div>
+        </div>
+      </div>
+
+      <!-- EVJ -->
+      <div class="tab-panel" id="panel-evj">
+        <div class="activites-grid">
+          <div class="card-activite"><div class="card-header" style="background:#FBEAF0">🎯<span class="card-cat cat-fete">EVJ / EVG</span></div><div class="card-body"><h3>Paint-ball à Aix</h3><p>Terrain outdoor avec scénarios, équipements fournis — session de 2h pour groupes à partir de 8 personnes.</p><div class="card-meta"><span class="meta-item"><i class="ti ti-map-pin"></i> 20 min</span><span class="meta-item"><i class="ti ti-clock"></i> 2-3h</span><span class="meta-item"><i class="ti ti-coin"></i> ~30€/pers</span></div></div></div>
+          <div class="card-activite"><div class="card-header" style="background:#FAECE7">🛶<span class="card-cat cat-sport">Sport</span></div><div class="card-body"><h3>Canoë sur la Durance</h3><p>Descente en groupe sur l'une des plus belles rivières de Provence — fun et accessible à tous niveaux.</p><div class="card-meta"><span class="meta-item"><i class="ti ti-map-pin"></i> 30 min</span><span class="meta-item"><i class="ti ti-clock"></i> Demi-journée</span><span class="meta-item"><i class="ti ti-coin"></i> ~25€/pers</span></div></div></div>
+          <div class="card-activite"><div class="card-header" style="background:#FAEEDA">🍷<span class="card-cat cat-loisir">Œnologie</span></div><div class="card-body"><h3>Dégustation en domaine viticole</h3><p>Visite privée d'un domaine de la région de Palette — accord mets-vins, pique-nique dans les vignes.</p><div class="card-meta"><span class="meta-item"><i class="ti ti-map-pin"></i> 15 min</span><span class="meta-item"><i class="ti ti-clock"></i> 3h</span><span class="meta-item"><i class="ti ti-coin"></i> ~45€/pers</span></div></div></div>
+          <div class="card-activite"><div class="card-header" style="background:#EAF3DE">🧘<span class="card-cat cat-nature">Bien-être</span></div><div class="card-body"><h3>Spa & hammam privatisé</h3><p>Spa privatisé pour groupes avec bain à remous, hammam et espace zen — parfait pour une EVJ douce.</p><div class="card-meta"><span class="meta-item"><i class="ti ti-map-pin"></i> 20 min</span><span class="meta-item"><i class="ti ti-clock"></i> 3h</span><span class="meta-item"><i class="ti ti-coin"></i> ~60€/pers</span></div></div></div>
+          <div class="card-activite"><div class="card-header" style="background:#E6F1FB">🎸<span class="card-cat cat-fete">Soirée</span></div><div class="card-body"><h3>Karaoké privatisé à Marseille</h3><p>Salle privatisée avec sono pro, lumières et bar — à 30 min, idéal pour prolonger la soirée.</p><div class="card-meta"><span class="meta-item"><i class="ti ti-map-pin"></i> 30 min</span><span class="meta-item"><i class="ti ti-clock"></i> Soirée</span><span class="meta-item"><i class="ti ti-coin"></i> ~20€/pers</span></div></div></div>
+          <div class="card-activite"><div class="card-header" style="background:#FAECE7">🏍️<span class="card-cat cat-sport">Adrénaline</span></div><div class="card-body"><h3>Quad & buggy en Luberon</h3><p>Parcours tout-terrain guidé en buggys 2 places dans les paysages du Luberon — sensations garanties.</p><div class="card-meta"><span class="meta-item"><i class="ti ti-map-pin"></i> 50 min</span><span class="meta-item"><i class="ti ti-clock"></i> 2h</span><span class="meta-item"><i class="ti ti-coin"></i> ~70€/pers</span></div></div></div>
+        </div>
+      </div>
+
+      <!-- Tous -->
+      <div class="tab-panel" id="panel-tous">
+        <div class="activites-grid">
+          <div class="card-activite"><div class="card-header" style="background:#FAECE7">🚢<span class="card-cat cat-sport">Mer</span></div><div class="card-body"><h3>Calanques de Marseille</h3><p>Balade en bateau ou randonnée dans les calanques — eaux turquoise et falaises calcaires à couper le souffle.</p><div class="card-meta"><span class="meta-item"><i class="ti ti-map-pin"></i> 35 min</span><span class="meta-item"><i class="ti ti-clock"></i> Journée</span><span class="meta-item"><i class="ti ti-coin"></i> ~30€/pers</span></div></div></div>
+          <div class="card-activite"><div class="card-header" style="background:#EEEDFE">🎭<span class="card-cat cat-loisir">Loisir</span></div><div class="card-body"><h3>Escape Game Aix-en-Provence</h3><p>Plusieurs salles thématiques disponibles en groupe — des scénarios pour tous les niveaux et toutes les occasions.</p><div class="card-meta"><span class="meta-item"><i class="ti ti-map-pin"></i> 15 min</span><span class="meta-item"><i class="ti ti-clock"></i> 1h</span><span class="meta-item"><i class="ti ti-coin"></i> ~25€/pers</span></div></div></div>
+          <div class="card-activite"><div class="card-header" style="background:#EAF3DE">🌅<span class="card-cat cat-nature">Panorama</span></div><div class="card-body"><h3>Coucher de soleil au Tholonet</h3><p>Promenade au bord du lac du Tholonet avec vue sur la Sainte-Victoire dorée — moment magique en fin de journée.</p><div class="card-meta"><span class="meta-item"><i class="ti ti-map-pin"></i> 20 min</span><span class="meta-item"><i class="ti ti-clock"></i> 1h30</span><span class="meta-item"><i class="ti ti-coin"></i> Gratuit</span></div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TÉMOIGNAGES -->
+  <section class="testi-section">
+    <div class="container">
+      <p class="section-label">Avis voyageurs</p>
+      <h2>Ce qu'ils en disent</h2>
+      <div class="testi-grid">
+        <div class="testi-card"><div class="stars">★★★★★</div><p class="testi-text">« Séjour parfait avec les enfants. Le logement est grand, bien équipé, et les suggestions d'activités dans le livret d'accueil nous ont vraiment aidés. »</p><div class="testi-author"><div class="testi-avatar" style="background:#4A7A25">ML</div><div><div class="testi-name">Marie-Laure</div><div class="testi-group">Famille — 2 enfants</div></div></div></div>
+        <div class="testi-card"><div class="stars">★★★★★</div><p class="testi-text">« On a fait notre EVG ici, deux nuits inoubliables. La maison était idéale pour notre groupe de 8, et le zoo de la Barben le lendemain c'était hilarant. »</p><div class="testi-author"><div class="testi-avatar" style="background:#C26040">KR</div><div><div class="testi-name">Kévin R.</div><div class="testi-group">Groupe EVG — 8 personnes</div></div></div></div>
+        <div class="testi-card"><div class="stars">★★★★☆</div><p class="testi-text">« Cadre magnifique, hôte réactif. On a adoré la proximité avec Aix et les calanques. On revient l'année prochaine, c'est sûr ! »</p><div class="testi-author"><div class="testi-avatar" style="background:#185FA5">SB</div><div><div class="testi-name">Sophie & Bertrand</div><div class="testi-group">Couple + amis</div></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INFOS -->
+  <section id="infos">
+    <div class="container">
+      <p class="section-label">Informations pratiques</p>
+      <h2>Tout ce qu'il faut savoir</h2>
+      <div class="infos-grid">
+        <div class="info-card"><div class="info-icon"><i class="ti ti-clock" aria-hidden="true"></i></div><div class="info-label">Arrivée</div><div class="info-value">Dès 16h</div></div>
+        <div class="info-card"><div class="info-icon"><i class="ti ti-door-exit" aria-hidden="true"></i></div><div class="info-label">Départ</div><div class="info-value">Avant 11h</div></div>
+        <div class="info-card"><div class="info-icon"><i class="ti ti-users" aria-hidden="true"></i></div><div class="info-label">Capacité max</div><div class="info-value">8 personnes</div></div>
+        <div class="info-card"><div class="info-icon"><i class="ti ti-paw" aria-hidden="true"></i></div><div class="info-label">Animaux</div><div class="info-value">Sur demande</div></div>
+        <div class="info-card"><div class="info-icon"><i class="ti ti-map-pin" aria-hidden="true"></i></div><div class="info-label">Depuis Marseille</div><div class="info-value">30 min A51</div></div>
+        <div class="info-card"><div class="info-icon"><i class="ti ti-plane" aria-hidden="true"></i></div><div class="info-label">Depuis l'aéroport</div><div class="info-value">20 min</div></div>
+        <div class="info-card"><div class="info-icon"><i class="ti ti-currency-euro" aria-hidden="true"></i></div><div class="info-label">À partir de</div><div class="info-value">120€ / nuit</div></div>
+        <div class="info-card"><div class="info-icon"><i class="ti ti-calendar" aria-hidden="true"></i></div><div class="info-label">Séjour minimum</div><div class="info-value">2 nuits</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section" id="reserver">
+    <div class="container">
+      <p class="section-label" style="color:rgba(255,255,255,0.5)">Réservation</p>
+      <h2>Prêts pour l'aventure ?</h2>
+      <p>Vérifiez les disponibilités et réservez directement sur Airbnb — réponse rapide garantie.</p>
+      <div class="cta-buttons">
+        <a href="https://airbnb.fr" class="btn-primary"><i class="ti ti-brand-airbnb" aria-hidden="true"></i> Réserver sur Airbnb</a>
+        <a href="mailto:contact@maisondesaventures.fr" class="btn-outline"><i class="ti ti-mail" aria-hidden="true"></i> Poser une question</a>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /page-home -->
+
+<!-- ═══════════════════════════════ PAGE BLOG ═══════════════════════════════ -->
+<div class="page" id="page-blog">
+  <div class="blog-page">
+    <div class="blog-header">
+      <p class="section-label">Blog</p>
+      <h2 style="margin-bottom:0.5rem;">Générateur d'articles</h2>
+      <p style="color:var(--ink-muted);font-size:0.95rem;line-height:1.7;">Saisis un titre, l'IA rédige un article SEO optimisé pour familles ou EVJ/EVG en Provence. Copie ensuite le HTML dans ton CMS.</p>
+    </div>
+
+    <div class="blog-generator">
+      <!-- Idées rapides -->
+      <div style="margin-bottom:1.5rem;">
+        <div style="font-size:12px;color:var(--ink-muted);margin-bottom:8px;font-weight:500;letter-spacing:0.04em;text-transform:uppercase;">Idées de titres</div>
+        <div class="ideas-row">
+          <button class="idea-chip" onclick="useIdea(this,'evj')">10 idées EVG originales autour d'Aix-en-Provence</button>
+          <button class="idea-chip" onclick="useIdea(this,'famille')">Weekend en famille dans les Bouches-du-Rhône</button>
+          <button class="idea-chip" onclick="useIdea(this,'evj')">EVJ réussie en Provence : nature et bien-être</button>
+          <button class="idea-chip" onclick="useIdea(this,'famille')">Où emmener ses enfants près de Velaux ce week-end ?</button>
+          <button class="idea-chip" onclick="useIdea(this,'evj')">Calanques, Sainte-Victoire : 3 escapades pour groupes</button>
+          <button class="idea-chip" onclick="useIdea(this,'famille')">Les meilleurs marchés provençaux avec des enfants</button>
+        </div>
+      </div>
+
+      <!-- Contrôles -->
+      <div class="gen-controls">
+        <input type="text" id="titleInput" placeholder="Titre de l'article…" />
+        <select id="catSelect">
+          <option value="famille">Familles</option>
+          <option value="evj">EVJ / EVG</option>
+        </select>
+        <button class="gen-btn" id="genBtn" onclick="generate()">
+          <i class="ti ti-sparkles" aria-hidden="true"></i> Générer
+        </button>
+      </div>
+
+      <div class="progress-bar" id="progressBar"><div class="progress-fill" id="progressFill"></div></div>
+      <div class="status-txt" id="statusTxt"></div>
+
+      <!-- Article généré -->
+      <div class="article-card" id="articleCard">
+        <h1 id="artTitle"></h1>
+        <div class="art-meta" id="artMeta"></div>
+        <div id="artBody"></div>
+        <div class="copy-strip">
+          <button class="copy-btn-sm" onclick="copyHTML()"><i class="ti ti-code" aria-hidden="true"></i> Copier le HTML</button>
+          <button class="copy-btn-sm" onclick="copyText()"><i class="ti ti-text" aria-hidden="true"></i> Copier le texte</button>
+          <button class="copy-btn-sm" onclick="saveArticle()" style="margin-left:auto;"><i class="ti ti-bookmark" aria-hidden="true"></i> Sauvegarder</button>
+        </div>
+      </div>
+
+      <!-- Articles sauvegardés -->
+      <div class="blog-list" id="blogList" style="margin-top:3rem;"></div>
+    </div>
+  </div>
+</div><!-- /page-blog -->
+
+<!-- FOOTER -->
+<footer>
+  <strong>La Maison des Aventures</strong> · Velaux, Bouches-du-Rhône ·
+  <a href="https://airbnb.fr" style="color:rgba(255,255,255,0.5)">Airbnb</a>
+</footer>
+
+<script>
+/* ── Navigation ── */
+function showPage(name) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + name).classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+/* ── Onglets activités ── */
+function switchTab(name) {
+  document.querySelectorAll('.tab-btn').forEach((b, i) => {
+    b.classList.toggle('active', ['famille','evj','tous'][i] === name);
+  });
+  document.querySelectorAll('.tab-panel').forEach(p => {
+    p.classList.toggle('active', p.id === 'panel-' + name);
+  });
+}
+
+/* ── Smooth scroll home ── */
+document.addEventListener('click', e => {
+  const a = e.target.closest('a[href^="#"]');
+  if (!a) return;
+  const t = document.querySelector(a.getAttribute('href'));
+  if (t) { e.preventDefault(); showPage('home'); setTimeout(() => t.scrollIntoView({behavior:'smooth'}), 50); }
+});
+
+/* ── Blog ── */
+let _html = '', _text = '', _articles = JSON.parse(localStorage.getItem('mda_articles') || '[]');
+
+function useIdea(btn, cat) {
+  showPage('blog');
+  document.getElementById('titleInput').value = btn.textContent.trim();
+  document.getElementById('catSelect').value = cat;
+}
+
+async function generate() {
+  const title = document.getElementById('titleInput').value.trim();
+  if (!title) { document.getElementById('statusTxt').textContent = 'Saisis un titre d\'article.'; return; }
+
+  const cat = document.getElementById('catSelect').value;
+  const btn = document.getElementById('genBtn');
+  const bar = document.getElementById('progressBar');
+  const fill = document.getElementById('progressFill');
+  const status = document.getElementById('statusTxt');
+  const card = document.getElementById('articleCard');
+
+  btn.disabled = true;
+  bar.classList.add('show');
+  card.classList.remove('show');
+  fill.style.width = '0%';
+
+  const steps = ['Analyse SEO du sujet…','Rédaction de l\'introduction…','Développement des sections…','Finalisation et optimisation…'];
+  let s = 0;
+  const iv = setInterval(() => {
+    if (s < steps.length) { status.textContent = steps[s]; fill.style.width = ((s+1)/steps.length*80)+'%'; s++; }
+  }, 900);
+
+  const catLabel = cat === 'evj' ? 'EVJ / EVG (enterrement de vie garçon / jeune fille)' : 'familles avec enfants';
+  const prompt = `Tu es rédacteur SEO spécialisé en tourisme provençal. Rédige un article de blog en français pour "La Maison des Aventures", location Airbnb à Velaux (Bouches-du-Rhône) ciblant les ${catLabel}.
+
+Titre : "${title}"
+
+Consignes :
+- Ton chaleureux, local, expert de la région
+- Structure avec H2 et H3
+- Intègre naturellement les mots-clés SEO (Provence, Bouches-du-Rhône, Aix-en-Provence, ${cat === 'evj' ? 'enterrement de vie de garçon, enterrement de vie de jeune fille, EVG, EVJ' : 'activités familles, enfants, week-end famille'})
+- 500 à 700 mots
+- Termine par un appel à l'action mentionnant La Maison des Aventures à Velaux
+- Format : HTML simple avec balises h2, h3, p, ul, li, strong uniquement
+- NE PAS inclure les balises html, head, body, article
+- Commencer directement par le premier paragraphe sans répéter le titre`;
+
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1000,
+        messages: [{ role: 'user', content: prompt }]
+      })
+    });
+    const data = await res.json();
+    _html = data.content?.find(b => b.type === 'text')?.text || '';
+    _text = _html.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
+
+    clearInterval(iv);
+    fill.style.width = '100%';
+    status.textContent = 'Article généré avec succès.';
+
+    const words = _text.split(/\s+/).length;
+    const read = Math.max(1, Math.round(words / 200));
+    const badgeClass = cat === 'evj' ? 'badge-e' : 'badge-f';
+    const badgeLabel = cat === 'evj' ? 'EVJ / EVG' : 'Familles';
+
+    document.getElementById('artTitle').textContent = title;
+    document.getElementById('artMeta').innerHTML = `
+      <span class="art-badge ${badgeClass}">${badgeLabel}</span>
+      <span class="art-info"><i class="ti ti-clock" style="font-size:13px"></i> ${read} min de lecture</span>
+      <span class="art-info"><i class="ti ti-map-pin" style="font-size:13px"></i> Velaux, Provence</span>
+      <span class="art-info"><i class="ti ti-file-text" style="font-size:13px"></i> ~${words} mots</span>`;
+    document.getElementById('artBody').innerHTML = _html;
+    card.dataset.title = title;
+    card.dataset.cat = cat;
+    card.classList.add('show');
+    setTimeout(() => { bar.classList.remove('show'); fill.style.width = '0%'; }, 800);
+  } catch(e) {
+    clearInterval(iv);
+    status.textContent = 'Erreur lors de la génération. Vérifie ta connexion.';
+    bar.classList.remove('show');
+  }
+  btn.disabled = false;
+}
+
+function copyHTML() {
+  navigator.clipboard.writeText(_html).then(() => { document.getElementById('statusTxt').textContent = 'HTML copié !'; });
+}
+function copyText() {
+  navigator.clipboard.writeText(_text).then(() => { document.getElementById('statusTxt').textContent = 'Texte copié !'; });
+}
+
+function saveArticle() {
+  const card = document.getElementById('articleCard');
+  const art = { id: Date.now(), title: card.dataset.title, cat: card.dataset.cat, html: _html, date: new Date().toLocaleDateString('fr-FR') };
+  _articles.unshift(art);
+  localStorage.setItem('mda_articles', JSON.stringify(_articles));
+  renderList();
+  document.getElementById('statusTxt').textContent = 'Article sauvegardé.';
+}
+
+function deleteArticle(id) {
+  _articles = _articles.filter(a => a.id !== id);
+  localStorage.setItem('mda_articles', JSON.stringify(_articles));
+  renderList();
+}
+
+function loadArticle(id) {
+  const art = _articles.find(a => a.id === id);
+  if (!art) return;
+  _html = art.html;
+  _text = art.html.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
+  const words = _text.split(/\s+/).length;
+  const read = Math.max(1, Math.round(words / 200));
+  const badgeClass = art.cat === 'evj' ? 'badge-e' : 'badge-f';
+  const badgeLabel = art.cat === 'evj' ? 'EVJ / EVG' : 'Familles';
+  document.getElementById('artTitle').textContent = art.title;
+  document.getElementById('artMeta').innerHTML = `<span class="art-badge ${badgeClass}">${badgeLabel}</span><span class="art-info"><i class="ti ti-clock" style="font-size:13px"></i> ${read} min de lecture</span><span class="art-info"><i class="ti ti-file-text" style="font-size:13px"></i> ~${words} mots</span>`;
+  document.getElementById('artBody').innerHTML = art.html;
+  const card = document.getElementById('articleCard');
+  card.dataset.title = art.title;
+  card.dataset.cat = art.cat;
+  card.classList.add('show');
+  window.scrollTo(0, card.getBoundingClientRect().top + window.scrollY - 80);
+}
+
+function renderList() {
+  const el = document.getElementById('blogList');
+  if (_articles.length === 0) { el.innerHTML = ''; return; }
+  el.innerHTML = `<h3 style="font-size:0.85rem;font-weight:500;color:var(--ink-muted);margin-bottom:1rem;letter-spacing:0.04em;text-transform:uppercase;">Articles sauvegardés (${_articles.length})</h3><div class="saved-articles">${_articles.map(a => `
+    <div class="saved-card">
+      <div>
+        <div class="saved-title">${a.title}</div>
+        <div class="saved-meta">${a.cat === 'evj' ? 'EVJ / EVG' : 'Familles'} · ${a.date}</div>
+      </div>
+      <div class="saved-actions">
+        <button class="icon-btn" onclick="loadArticle(${a.id})" title="Afficher"><i class="ti ti-eye"></i></button>
+        <button class="icon-btn" onclick="deleteArticle(${a.id})" title="Supprimer"><i class="ti ti-trash"></i></button>
+      </div>
+    </div>`).join('')}</div>`;
+}
+
+document.getElementById('titleInput').addEventListener('keydown', e => { if (e.key === 'Enter') generate(); });
+renderList();
+</script>
+</body>
+</html>
